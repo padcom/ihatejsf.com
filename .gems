@@ -1,1 +1,3 @@
 sinatra
+db-core
+db-migrations
