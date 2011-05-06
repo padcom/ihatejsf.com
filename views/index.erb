@@ -1,18 +1,13 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="/styles.css"/>
-  </head>
-  <body>
-    <form action="/new" method="post">
-      <input type="text" name="title"/><input type="submit" value="Add"/>
-    </form>
-    <table>
-    <% for post in @posts do %>
-      <tr>
-        <td><%= post.id %></td>
-        <td><%= post.title %></td>
-      </tr>
-    <% end %>
-    </table>
-  </body>
-</html>
+<form action="/new" method="post">
+  <input type="text" name="title"/><input type="submit" value="Add"/>
+</form>
+
+<table>
+<% for post in @posts do %>
+  <tr>
+    <td><%= post.id %></td>
+    <td><%= post.title %></td>
+  </tr>
+<% end %>
+</table>
+
