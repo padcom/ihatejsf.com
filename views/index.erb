@@ -1,13 +1,47 @@
-<form action="/new" method="post">
-  <input type="text" name="title"/><input type="submit" value="Add"/>
-</form>
+<!DOCTYPE HTML>
 
-<table>
-<% for post in @posts do %>
-  <tr>
-    <td><%= post.id %></td>
-    <td><%= post.title %></td>
-  </tr>
-<% end %>
-</table>
+<html>
 
+<head>
+  <title>I HATE JSF</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="keywords" content="jsf, sucks">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/ui-darkness/jquery-ui.css"/>
+  <link rel="stylesheet" href="/css/default.css" />
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="js/application.js"></script>
+</head>
+
+<body>
+
+<div id="page">
+  <div id="header">
+    <div id="logo"></div>
+    <div id="company_name">Java ServerFaces (JSF)<br/>WTF?!</div>
+    <div id="logopanel_left"></div>
+    <div id="img01a"></div>
+  </div>
+  <div id="body">
+    <a href="#" id="link-to-post">Why does JSF suck 4 U?</a>
+    <div class="sucks-4-others">JSF sucks for others because...</div>
+    <div id="posts">
+      <%= erb :posts, :layout => false, :locals => { :posts => @posts } %>
+    </div>
+    <div id="add-post">
+      <form id="post">
+        <textarea name="text" rows="2" cols="58" width="100%"></textarea>
+        <input id="post-clear" type="reset" style="display: none;" value="" />
+      </form>
+    </div>
+  </div>
+  <div id="footer">
+    <div id="bottom_menu"><a href="http://ihatejsf.blogspot.com">JSF Nonsenses blog</a> | <a href="http://padcom13.blogspot.com">Padcom's blog</a></div>
+    <div id="bottom_addr">© 2010 Matthias Hryniszak. All Rights Reserved</div>
+    <div class="bottom"></div>
+  </div>
+</div>
+
+</body>
+
+</html>
