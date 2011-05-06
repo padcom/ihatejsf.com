@@ -16,7 +16,7 @@ class Post
   property :created_at, DateTime
 end
 
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
 
 get '/' do
   @posts = Post.all(:order => [ :created_at.desc ])
