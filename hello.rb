@@ -25,7 +25,7 @@ end
 
 post '/complain' do
   Post.create(:text => params[:text]) 
-  redirect to("/")
+  "OK"
 end
 
 get '/list' do
