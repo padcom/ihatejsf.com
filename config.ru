@@ -1,2 +1,2 @@
-require 'hi'
+require 'hello'
 run Sinatra::Application
