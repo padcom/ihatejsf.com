@@ -12,6 +12,7 @@ class Post
   include DataMapper::Resource
 
   property :id, Serial
+  property :nick, Text
   property :text, Text
   property :created_at, DateTime
 end
@@ -24,11 +25,20 @@ get '/' do
 end
 
 post '/complain' do
-  Post.create(:text => params[:text]) 
+  Post.create(:text => params[:text], :nick => params[:nick]) 
   "OK"
 end
 
 get '/list' do
   @posts = Post.all(:order => [ :created_at.desc ])
-  erb :posts
+  erb :posts, :layout => false
+end
+
+get '/post/:id' do
+  post = Post.get(params[:id])
+  if post
+    erb :single_post, :locals => { :post => post }
+  else
+    erb :index
+  end
 end

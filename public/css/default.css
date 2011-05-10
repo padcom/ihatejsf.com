@@ -22,7 +22,7 @@ h2 { font-size:16px;font-weight:normal;color:#000;margin:2px 0 7px; }
 
 #contentwrap { position:relative; }
 
-#body { color:#fff;text-align: justify;padding: 10px 10px 20px;vertical-align: top; font-size:12px; }
+#body { color:#fff;padding: 10px 10px 20px;vertical-align: top; font-size:12px; }
 
 #footer { width:780px; background:#901c1c url(../images/footer-top.png) no-repeat top; padding-top:8px; }
 #bottom_menu { color:gray;text-align: center;padding: 5px 15px 4px; font-size:12px; }
@@ -40,8 +40,12 @@ h2 { font-size:16px;font-weight:normal;color:#000;margin:2px 0 7px; }
 div.sucks-4-others { margin-bottom: 5px; }
 #posts { height: 200px; overflow-y: auto; overflow-x: hidden; }
 div.stars { margin: 0; padding: 0; }
-p.post { margin: 0 0 15px 0; padding: 0; }
-p.post:first-line { font-weight: bold; font-size: 20px; }
-
+.post { margin: 0px 0 15px 0; padding: 0; vertical-align: top; }
+.post-content { font-weight: bold; font-size: 20px; margin: 0px 10px 5px 0px; line-height: 105%; }
+.post-author, .created_at { font-size: 16px; vertical-align:top; padding-top: 5px; padding-right: 3px; border: none;}
+.post-likeit { margin-top: -1px; }
 div.wait-panel { background:url(../images/ajax.gif) no-repeat; height: 100%; }
 .ui-dialog { font-size: 12px !important; }
+label { clear: both; display: block;  }
+#nick { }
+#complaint { width: 100%; height: 75px; }
