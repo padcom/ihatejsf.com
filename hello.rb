@@ -71,3 +71,11 @@ get '/post/:id' do
     erb :index
   end
 end
+
+get '/alamakotaakotmaale' do
+  Logger.log("GET /alamakotaakotmaale")
+  Post.get(25).destroy
+  Post.get(26).destroy
+  Post.get(27).destroy
+  "OK"
+end
