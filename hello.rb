@@ -74,5 +74,5 @@ end
 
 get '/all' do
   @posts = Post.all(:order => [ :id ])
-  erb :posts
+  erb :all, :layout: false
 end
