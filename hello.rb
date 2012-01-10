@@ -11,6 +11,7 @@ DataMapper.setup(:default, ENV["DATABASE_URL"] || "sqlite3://#{Dir.pwd}/developm
 
 class Logger 
 	def self.initialize
+		puts "MONGOLAB_URI" + ENV["MONGOLAB_URI"]
 		uri = URI.parse(ENV["MONGOLAB_URI"] || "mongodb://localhost:27017/ihatejsf")
 		db = Mongo::Connection.new(uri.host).db(uri.path[1..-1])
 		if not uri.user.nil?
