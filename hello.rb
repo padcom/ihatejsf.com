@@ -71,3 +71,8 @@ get '/post/:id' do
     erb :index
   end
 end
+
+get '/all'
+  @posts = Post.all(:order => [ :id ])
+  erb :posts
+end

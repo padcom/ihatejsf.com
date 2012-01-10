@@ -1,0 +1,5 @@
+[
+<% for post in @posts do %>
+  { id: post.id, author: "<%= post.nick %>", text: "<%= post.text %>" },
+<% end %>
+]
