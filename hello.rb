@@ -9,7 +9,7 @@ require 'mongo'
 
 DataMapper.setup(:default, ENV["DATABASE_URL"] || "sqlite3://#{Dir.pwd}/development.db")
 
-class Logger 
+class Logger
 	def self.initialize
 		uri = URI.parse(ENV["MONGOLAB_URI"] || "mongodb://localhost:27017/ihatejsf")
 		db = Mongo::Connection.new(uri.host, uri.port).db(uri.path[1..-1])
@@ -52,7 +52,7 @@ end
 
 post '/complain' do
   Logger.log("POST /complain")
-  Post.create(:text => params[:text], :nick => params[:nick]) 
+  Post.create(:text => params[:text], :nick => params[:nick])
   "OK"
 end
 
@@ -72,7 +72,7 @@ get '/post/:id' do
   end
 end
 
-get '/all'
+get '/all' do
   @posts = Post.all(:order => [ :id ])
   erb :posts
 end
