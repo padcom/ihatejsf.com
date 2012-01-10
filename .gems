@@ -2,3 +2,4 @@ sinatra
 datamapper
 dm-postgres-adapter
 mongo
+bson_ext
