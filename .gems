@@ -1,3 +1,4 @@
 sinatra
 datamapper
 dm-postgres-adapter
+mongo
