@@ -1,7 +1,7 @@
   <div class="post">
-    <div class="post-content"><%= post.text %></div>
+    <div class="post-content"><%= post["text"] %></div>
     <div class="post-info">
-      <span class="post-author">Posted by <%= post.nick || 'anonymous' %> <abbr class="created_at" title="<%= post.created_at.new_offset(0) %>"></abbr></span>
-      <iframe class="post-likeit" src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fihatejsf.com%2Fpost/<%=post.id%>&amp;send=true&amp;layout=button_count&amp;width=250&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:21px; " allowTransparency="true"></iframe>
+      <span class="post-author">Posted by <%= post[:nick] || 'anonymous' %> <abbr class="created_at" title="<%= DateTime.parse(post["created"].to_s).new_offset(0) unless post["created"].nil? %>"></abbr></span>
+      <iframe class="post-likeit" src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fihatejsf.com%2Fpost/<%=post["_id"]%>&amp;send=true&amp;layout=button_count&amp;width=250&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:21px; " allowTransparency="true"></iframe>
     </div>
   </div>

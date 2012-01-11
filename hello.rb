@@ -22,6 +22,7 @@ class Logger
 			@@collection = db.create_collection("log", :capped => true, :size => 100000, :max => 1000)
 		end
 		@@posts = db.collection("posts")
+		@@counters = db.collection("counters")
 	end
 
 	def self.log(s)
@@ -33,6 +34,10 @@ class Logger
 	
 	def self.posts
 	    @@posts
+	end
+	
+	def self.next_id
+	    @@counters.find_and_modify({ :query => { :_id => "posts" }, :update => { "$inc" => { :sequence => 1 } } })
 	end
 end
 
@@ -51,56 +56,41 @@ DataMapper.auto_upgrade!
 
 get '/' do
   Logger.log("GET /")
-  @posts = Post.all(:order => [ :created_at.desc ])
+  @posts = Logger.posts.find.sort([[ 'created', 'descending' ]])
   erb :index
 end
 
 post '/complain' do
   Logger.log("POST /complain")
-  Post.create(:text => params[:text], :nick => params[:nick])
+  Logger.posts.insert({
+    :_id => Logger.next_id,
+    :author => params[:nick],
+    :text => params[:text],
+    :created => Time.new
+  })
   "OK"
 end
 
 get '/list' do
   Logger.log("GET /list")
-  @posts = Post.all(:order => [ :created_at.desc ])
+  @posts = Logger.posts.find.sort([[ 'created', 'descending' ]])
   erb :posts, :layout => false
 end
 
 get '/post/:id' do
   Logger.log("GET /post/" + params[:id])
-  post = Post.get(params[:id])
+  post = Logger.posts.find_one({ :_id => Integer(params[:id]) })
   if post
     erb :single_post, :locals => { :post => post }
   else
-    erb :index
-  end
-end
-
-get '/all' do
-  @posts = Post.all(:order => [ :id ])
-  erb :all, :layout => false
-end
-
-get '/test' do
-    @posts = Logger.posts.find()
-    erb :test, :layout => false
-end
-
-get '/post1/:id' do
-  Logger.log("GET /post1/" + params[:id])
-  post = Logger.posts.find_one({ :_id => Integer(params[:id]) })
-  if post
-    erb :single_post1, :locals => { :post => post }
-  else
     Logger.log("post with id " + params[:id] + " not found - returning index")
-    @posts = Post.all(:order => [ :created_at.desc ])
+    @posts = Logger.posts.find.sort([[ 'created', 'descending' ]])
     erb :index
   end
 end
 
-get '/test2' do
-    Logger.log("GET /test2")
+get '/migrate' do
+    Logger.log("GET /migrate")
     posts = Post.all(:order => :created_at.desc)
     Logger.posts.remove
     posts.each do |post|
@@ -108,10 +98,8 @@ get '/test2' do
 	    :_id => post.id,
 	    :author => post.nick,
 	    :text => post.text,
-	    :created => Time.new
+	    :created => Time.parse(post.created_at.to_s)
 	})
     end
     "DONE"
 end
-
-# db.counters.findAndModify({ query: { _id: "posts" }, update: { $inc: { sequence: 1 } } });
