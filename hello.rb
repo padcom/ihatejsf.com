@@ -21,6 +21,7 @@ class Logger
 		else
 			@@collection = db.create_collection("log", :capped => true, :size => 100000, :max => 1000)
 		end
+		@@posts = db.collection("posts")
 	end
 
 	def self.log(s)
@@ -75,4 +76,9 @@ end
 get '/all' do
   @posts = Post.all(:order => [ :id ])
   erb :all, :layout => false
+end
+
+get '/test do
+    @posts = Logger.posts.find()
+    erb :test, :layout => false
 end
