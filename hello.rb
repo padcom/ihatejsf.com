@@ -2,12 +2,8 @@ require 'rubygems'
 require 'sinatra'
 require "sinatra/reloader" if development?
 require 'erb'
-require 'dm-core'
-require 'dm-migrations'
 require 'dm-timestamps'
 require 'mongo'
-
-DataMapper.setup(:default, ENV["DATABASE_URL"] || "sqlite3://#{Dir.pwd}/development.db")
 
 class Logger
 	def self.initialize
@@ -42,17 +38,6 @@ class Logger
 end
 
 Logger.initialize
-
-class Post
-  include DataMapper::Resource
-
-  property :id, Serial
-  property :nick, Text
-  property :text, Text
-  property :created_at, DateTime
-end
-
-DataMapper.auto_upgrade!
 
 get '/' do
   Logger.log("GET /")
