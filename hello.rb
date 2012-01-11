@@ -86,3 +86,14 @@ get '/test' do
     @posts = Logger.posts.find()
     erb :test, :layout => false
 end
+
+get '/post1/:id' do
+  Logger.log("GET /post1/" + params[:id])
+  post = Logger.posts.findOne([ "_id" => params[:id] ])
+  if post
+    erb :single_post1, :locals => { :post => post }
+  else
+    erb :index
+  end
+end
+
