@@ -89,14 +89,29 @@ end
 
 get '/post1/:id' do
   Logger.log("GET /post1/" + params[:id])
-  post = Logger.posts.find_one({ "_id" => params[:id] })
+  post = Logger.posts.find_one({ :_id => Integer(params[:id]) })
   if post
     erb :single_post1, :locals => { :post => post }
   else
-    Logger.log("post with id " + params[:id] + "not found - returning index")
+    Logger.log("post with id " + params[:id] + " not found - returning index")
     @posts = Post.all(:order => [ :created_at.desc ])
     erb :index
   end
+end
+
+get '/test2' do
+    Logger.log("GET /test2")
+    posts = Post.all(:order => :created_at.desc)
+    Logger.posts.remove
+    posts.each do |post|
+	Logger.posts.insert({
+	    :_id => post.id,
+	    :author => post.nick,
+	    :text => post.text,
+	    :created => Time.new
+	})
+    end
+    "DONE"
 end
 
 # db.counters.findAndModify({ query: { _id: "posts" }, update: { $inc: { sequence: 1 } } });
