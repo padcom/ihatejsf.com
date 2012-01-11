@@ -31,7 +31,7 @@ class Logger
 		})
 	end
 	
-	def self.posts do
+	def self.posts
 	    @@posts
 	end
 end
