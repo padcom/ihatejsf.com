@@ -30,6 +30,10 @@ class Logger
 			:message   => s
 		})
 	end
+	
+	def self.posts do
+	    @@posts
+	end
 end
 
 Logger.initialize
