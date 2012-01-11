@@ -89,7 +89,7 @@ end
 
 get '/post1/:id' do
   Logger.log("GET /post1/" + params[:id])
-  post = Logger.posts.find_one([ "_id" => params[:id] ])
+  post = Logger.posts.find_one({ "_id" => params[:id] })
   if post
     erb :single_post1, :locals => { :post => post }
   else
