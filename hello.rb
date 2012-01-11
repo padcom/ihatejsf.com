@@ -93,6 +93,7 @@ get '/post1/:id' do
   if post
     erb :single_post1, :locals => { :post => post }
   else
+    Logger.log("post with id " + params[:id] + "not found - returning index")
     @posts = Post.all(:order => [ :created_at.desc ])
     erb :index
   end
