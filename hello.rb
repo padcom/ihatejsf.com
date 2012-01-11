@@ -78,7 +78,7 @@ get '/all' do
   erb :all, :layout => false
 end
 
-get '/test do
+get '/test' do
     @posts = Logger.posts.find()
     erb :test, :layout => false
 end
