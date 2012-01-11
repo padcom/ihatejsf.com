@@ -73,18 +73,3 @@ get '/post/:id' do
     erb :index
   end
 end
-
-get '/migrate' do
-    Logger.log("GET /migrate")
-    posts = Post.all(:order => :created_at.desc)
-    Logger.posts.remove
-    posts.each do |post|
-	Logger.posts.insert({
-	    :_id => post.id,
-	    :author => post.nick,
-	    :text => post.text,
-	    :created => Time.parse(post.created_at.to_s)
-	})
-    end
-    "DONE"
-end
