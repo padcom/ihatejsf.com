@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require "sinatra/reloader" if development?
+#require "sinatra/reloader" if development?
 require 'erb'
 require 'dm-timestamps'
 require 'mongo'
@@ -49,6 +49,12 @@ class Logger
 end
 
 Logger.initialize
+
+helpers do
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
+end
 
 get '/' do
   Logger.log("GET /")
