@@ -6,6 +6,8 @@ require 'dm-timestamps'
 require 'mongo'
 require 'uri'
 
+set :erubis, :escape_html => true
+
 class Database
 	def self.initialize
 		uri   = ENV["MONGOLAB_URI"] || "mongodb://localhost:27017/ihatejsf"
