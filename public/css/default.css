@@ -1,91 +1,52 @@
-/* Space out content a bit */
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
+html,body { margin:0;padding:0;background:#050e15;width:100%;height:100%;font-family:Verdana, Arial, Helvetica, sans-serif; }
+* html #wrap{height: 100%;}
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-right: 15px;
-  padding-left: 15px;
-}
+a { color:#a82b00;text-decoration:none; }
+a:hover{ color:#901f1c;text-decoration:underline; }
+a.hidden{text-decoration: none;color:#000;cursor:default; }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  padding-bottom: 19px;
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-}
+form { margin:0;padding:0; }
 
-/* Custom page footer */
-.likeit {
-  border-top: 1px solid #e5e5e5;
-  padding-top: 8px;
-}
+h1 { font-size:20px;font-weight:normal;color:#fff;margin:5px 0 10px; }
+h2 { font-size:16px;font-weight:normal;color:#000;margin:2px 0 7px; }
 
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
+#wrap { position:relative; min-height:100%; margin:0 auto; width:100%; }
+#page { width:780px;margin:0 auto; }
 
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
-.container-narrow > hr {
-  margin: 30px 0;
-}
+#header { position:relative; background:url(../images/img01.jpg) no-repeat; height:265px; margin-bottom: 20px;}
+#topline { margin-bottom:9px; }
+#logo { position:absolute; margin:30px 0 0 20px; background:url(../images/logo.png); width: 74px; height: 65px; }
+#company_name { font-size:18px;font-weight:normal;text-transform:none;color:#000;position:absolute;margin:35px 0 0 110px; text-align: center; line-height: 1.5; }
+#logopanel_left { width:8px; height:81px; background:#FFF; position:absolute; margin:22px 0 0 -8px; }
+#img01a { position:absolute; background:url(../images/img01a.jpg) no-repeat; width:124px; height:19px; margin:265px 0 0 306px; }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  padding: 14px 24px;
-  font-size: 21px;
-}
+#contentwrap { position:relative; }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
-}
+#body { color:#fff;padding: 10px 10px 20px;vertical-align: top; font-size:12px; }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
+#footer { width:780px; background:#901c1c url(../images/footer-top.png) no-repeat top; padding-top:8px; }
+#bottom_menu { color:gray;text-align: center;padding: 5px 15px 4px; font-size:12px; }
+#bottom_menu a { color:white;text-decoration:none; padding:0 5px; }
+#bottom_menu a:hover { color:white;text-decoration:underline; }
 
-.post-likeit {
-  height: 18pt;
-  border: none;
-  margin-bottom: -6px;
-  padding-left: 10px;
-}
+#bottom_addr { color:#FFF;text-align:center;padding: 4px 15px 5px; font-size:11px; }
+#bottom_addr a { text-decoration:underline; }
+#bottom_addr a:hover { text-decoration: underline; }
+
+#footer .bottom { background:url(../images/footer-bottom.png) no-repeat; height:8px; overflow:hidden; }
+
+#link-to-post { display: block; clear: both; width: 100%; text-align: center; color: yellow; font-size: 32px; padding-bottom: 20px; }
+
+div.sucks-4-others { margin-bottom: 5px; }
+#posts { height: 200px; overflow-y: auto; overflow-x: hidden; }
+div.stars { margin: 0; padding: 0; }
+.post { margin: 0px 0 15px 0; padding: 0; vertical-align: top; }
+.post-content { font-weight: bold; font-size: 20px; margin: 0px 10px 5px 0px; line-height: 105%; }
+.post-author, .created_at { font-size: 16px; vertical-align:top; padding-top: 5px; padding-right: 3px; border: none;}
+.post-likeit { margin-top: -1px; }
+div.wait-panel { background:url(../images/ajax.gif) no-repeat; height: 100%; }
+.ui-dialog { font-size: 12px !important; }
+label { clear: both; display: block;  }
+#nick { }
+#complaint { width: 98%; height: 75px; }
+#facebook { background-color: #EEE; margin: 0px; margin-bottom: 5px; padding: 4px 12px 0 12px; text-align: center; }

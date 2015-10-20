@@ -5,7 +5,6 @@ require 'erb'
 require 'dm-timestamps'
 require 'mongo'
 require 'uri'
-require 'json'
 
 set :erubis, :escape_html => true
 
@@ -63,7 +62,6 @@ get '/' do
   erb :index
 end
 
-
 post '/complain' do
   Logger.log("POST /complain")
   Database["posts"].insert({
@@ -72,15 +70,6 @@ post '/complain' do
     :text => params[:text],
     :created => Time.new
   })
-  "OK"
-end
-
-post '/complain2' do
-  Logger.log("POST /complain")
-  post = JSON.parse(request.body.read.to_s)
-  post[:_id] = Database.next_id("posts")["sequence"]
-  post[:created] = Time.new
-  Database["posts"].insert(post)
   "OK"
 end
 
@@ -100,14 +89,4 @@ get '/post/:id' do
     @posts = Database["posts"].find.sort([[ 'created', 'descending' ]])
     erb :index
   end
-end
-
-get '/ng' do
-  Logger.log("GET /ng");
-  erb :ng, :layout => false
-end
-
-get '/api/posts' do
-  content_type :json
-  Database["posts"].find.sort([[ 'created', 'descending' ]]).to_a.to_json
 end
